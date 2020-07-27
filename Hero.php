@@ -55,4 +55,8 @@ class Hero extends Character {
         return $this->shieldValue = $shieldTakeValue;
     }
 
+    public function attacked($attackedValue) {
+        $this->setHealth($this->getHealth() - ($this->$attackedValue - $this->getShieldValue()));
+    }
+
 }
