@@ -25,7 +25,7 @@ $i = 1
             <div class="col l6 s12">
                 <div class="card horizontal z-depth-3">
                     <div class="card-image">
-                        <img class="card-img" src="paladin.jpg">
+                        <img class="card-img" src="original.gif">
                     </div>
                     <div class="card-stacked">
                         <div class="card-content">
@@ -40,7 +40,7 @@ $i = 1
             <div class="col l6 s12">
                 <div class="card horizontal z-depth-3">
                     <div class="card-image">
-                        <img class="card-img" src="orc.jpg">
+                        <img class="card-img" src="thrall.gif">
                     </div>
                     <div class="card-stacked">
                         <div class="card-content">
@@ -66,31 +66,35 @@ $i = 1
                         if ($hero->getRage() > 100) {
                         ?>
                             <p class="teal-text">Le héro attaque et inflige <?= $hero->getWeaponDamage() ?> points de dégâts à l'orc. Vous perdez 100 points de rage</p>
+
                             <?php
                             $orc->setHealth($orc->getHealth() - $hero->setWeaponDamage($hero->getWeaponDamage()));
                             if ($orc->getHealth() <= 0) { ?>
+                                <img src="winattackhero.gif" alt="Gif Attaque Heros">
                                 <p class="red-text darken-3">L'orc est mort</p>
                             <?php } else { ?>
+                                <img src="attackhero.gif" alt="Gif Attaque Heros">
                                 <p class="deep-purple-text">L'orc n'a plus que <?= $orc->getHealth() ?> points de vie.</p>
                             <?php $hero->setRage($hero->getRage() - 100);
                             }
                         } else {
-                        ?>
+                            ?>
                             <p class="orange-text darken-4">Rage : <?= $hero->getRage() ?></p>
-                        <?php } 
-                            if ($orc->getHealth() > 0) {
-                        ?>
-                        <p class="red-text darken-3">L'orc vous a causé <?= $orc->attackOrc() ?> de dommage. </p>
-                        <?php
-                        $hero->attacked($orc->getDamage());
-                        
-                        if ($hero->getHealth() < 0) {
-                        ?>
-                            <p class="red-text accent-4">Vous êtes mort !</p>
-                        <?php } else { ?>
-                            <p class="green-text lighten-1">Il vous reste plus que <?= $hero->getHealth() ?> points de vie</p>
                         <?php }
-                            }
+                        if ($orc->getHealth() > 0) {
+                        ?>
+                            <p class="red-text darken-3">L'orc vous a causé <?= $orc->attackOrc() ?> de dommage. </p>
+                            <?php
+                            $hero->attacked($orc->getDamage());
+
+                            if ($hero->getHealth() < 0) {
+                            ?>
+                                <p class="red-text accent-4">Vous êtes mort !</p>
+                                <img src="deadhero.gif" alt="Le Héros est mort">
+                            <?php } else { ?>
+                                <p class="green-text lighten-1">Il vous reste plus que <?= $hero->getHealth() ?> points de vie</p>
+                        <?php }
+                        }
                         ?>
                     </li>
                 </ul>
