@@ -59,8 +59,8 @@ $i = 1
                 <ul class="collection z-depth-3">
                     <li class="collection-item">
                         <h2 class="header">Phase <?= $i++ ?></h2>
-                        <p class="green-text lighten-1">Vie : <?= $hero->getHealth() ?></p>
-                        <p class="blue-text lighten-1">Bouclier : <?= $hero->getShieldValue() ?></p>
+                        <p class="green-text lighten-1">Point de Vie : <?= $hero->getHealth() ?></p>
+                        <p class="blue-text lighten-1">Point de Bouclier : <?= $hero->getShieldValue() ?></p>
                         <?php
                         $hero->rageRaise();
                         if ($hero->getRage() > 100) {
