@@ -77,16 +77,21 @@ $i = 1
                         } else {
                         ?>
                             <p class="orange-text darken-4">Rage : <?= $hero->getRage() ?></p>
-                        <?php } ?>
+                        <?php } 
+                            if ($orc->getHealth() > 0) {
+                        ?>
                         <p class="red-text darken-3">L'orc vous a causé <?= $orc->attackOrc() ?> de dommage. </p>
                         <?php
                         $hero->attacked($orc->getDamage());
+                        
                         if ($hero->getHealth() < 0) {
                         ?>
-                            <p class="red-text accent-4">Vous êtes mort !</p>;
+                            <p class="red-text accent-4">Vous êtes mort !</p>
                         <?php } else { ?>
                             <p class="green-text lighten-1">Il vous reste plus que <?= $hero->getHealth() ?> points de vie</p>
-                        <?php } ?>
+                        <?php }
+                            }
+                        ?>
                     </li>
                 </ul>
             <?php } ?>
