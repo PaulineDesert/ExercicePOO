@@ -18,7 +18,7 @@ require 'Orc.php';
 <body>
 
     <p><?php $hero = new Hero('Excalibur', 250, 2000, 0, 'Bouclier de Doran', 600); ?></p>
-    <p><?php $orc = new Orc(750, 0); ?></p>
+    <p><?php $orc = new Orc(500, 0); ?></p>
 
     <?php
 
@@ -37,7 +37,7 @@ require 'Orc.php';
             
     ?>
 
-    <p>Le héro attaque</p>
+    <p>Le héro attaque et inflige <?= $hero->getWeaponDamage() ?> points de dégâts à l'orc.</p>
 
     <?php
 
@@ -46,6 +46,7 @@ require 'Orc.php';
                 echo 'L\'orc est mort';
             } else {
                 echo 'L\'orc n\'a plus que ' . $orc->getHealth() . ' points de vie.';
+                $hero->setRage($hero->getRage() - 100);
             }
         } else {
 
